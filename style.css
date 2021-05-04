@@ -11,27 +11,6 @@
 
 body {
   background: #435363;
-  -webkit-animation: bg 10s infinite alternate;
-  -moz-animation: bg 10s infinite alternate;
-  -o-animation: bg 10s infinite alternate;
-  animation: bg 10s infinite alternate;
-}
-
-@-webkit-keyframes bg {
-  0%   { background: #984D6F; }
-  100% { background: #435363; }
-}
-@-moz-keyframes bg {
-  0%   { background: #984D6F; }
-  100% { background: #435363; }
-}
-@-o-keyframes bg {
-  0%   { background: #984D6F; }
-  100% { background: #435363; }
-}
-@keyframes bg {
-  0%   { background: #984D6F; }
-  100% { background: #435363; }
 }
 
 .footer {
