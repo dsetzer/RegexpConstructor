@@ -136,10 +136,6 @@
   <!-- ========= -->
 
   <script type="text/template" id="main">
-    <div class="firstpage" id="containerinner"><a href="#!/input" class="tr" style="font-family: 'Joti One', cursive;">I want to build regular expression!</a></div>
-  </script>
-
-  <script type="text/template" id="input">
     <div class="secondpage" id="containerinner">
       <label for="regexparea" class="tr">Input result together with side text.</label>
       <div class="gray12 tr" style="width:100%;text-align:center">Use only text needed to match text. For example, if you want to capture links on page, you can use &lt;a href="http://google.com"</div>
@@ -196,7 +192,7 @@
       </div>
       <div class="buttonpanel">
         <a href="#!/regexpconstruct" class="tr btn btn-success disabled" id="toregexpconstruct">Next</a>
-        <a href="#!/input" class="tr btn btn-info" id="toregexpinput">Previous</a>
+        <a href="#!/main" class="tr btn btn-info" id="toregexpinput">Previous</a>
       </div>
     </div>
   </script>
@@ -209,7 +205,7 @@
       </div>
       <div class="buttonpanel">
         <a href="#!/regexptest" class="tr btn btn-success disabled" id="toregexptest">Next</a>
-        <a href="#!/input" class="tr btn btn-info" id="toregexpinput">Previous</a>
+        <a href="#!/main" class="tr btn btn-info" id="toregexpinput">Previous</a>
       </div>
     </div>
   </script>
@@ -643,7 +639,6 @@
         this.templates =
         {
           "main" : _.template($('#main').html()),
-          "input" : _.template($('#input').html()),
           "resultselect" : _.template($('#resultselect').html()),
           "regexpconstruct" : _.template($('#regexpconstruct').html()),
           "regexptest" : _.template($('#regexptest').html())
@@ -670,7 +665,7 @@
         }
         if(state == "resultselect" && _GobalModel.get("inputtext").length == 0)
         {
-          state = "input"
+          state = "main"
         }
 
         $("#container").html(this.templates[state]({model:this.model.toJSON()}))
@@ -706,7 +701,7 @@
     var Router = Backbone.Router.extend({
         routes: {
             "": "main",
-            "!/input": "input",
+            "!/main": "main",
             "!/resultselect": "resultselect",
             "!/regexpconstruct": "regexpconstruct",
             "!/regexptest": "regexptest",
@@ -715,10 +710,6 @@
         main: function () {
           _GobalModel.set({ constr: [] });
           _GobalModel.set({ state: "main" });
-        },
-        input: function () {
-          _GobalModel.set({ constr: [] });
-          _GobalModel.set({ state: "input" });
         },
         resultselect: function () {
           _LocalModel.set({ selectionresultstart: _GobalModel.get("selectionresultstart") });
